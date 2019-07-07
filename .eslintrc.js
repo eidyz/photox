@@ -20,6 +20,7 @@ module.exports = {
     'import/no-unresolved': 0,
     'no-param-reassign': 0,
     'no-shadow': 0,
+    'no-console': "off",
     'import/extensions': 0,
     'import/newline-after-import': 0,
     'no-multi-assign': 0,

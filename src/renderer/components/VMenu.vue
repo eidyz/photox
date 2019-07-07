@@ -3,7 +3,7 @@
     <a-row>
       <a-col :span="24">
         Brightness
-        <a-slider :defaultValue="50" :tooltipVisible="false" />
+        <a-slider :defaultValue="50" :tooltipVisible="false" @afterChange="changeBrightness" v-model="brightness"/>
       </a-col>
       <a-col :span="24">
         Contrast
@@ -25,6 +25,11 @@ export default {
       contranst: 50,
       saturation: 50,
     };
+  },
+  methods: {
+    changeBrightness() {
+      this.$store.commit('CHANGE_BRIGHTNESS', this.brightness);
+    },
   },
 };
 </script>
