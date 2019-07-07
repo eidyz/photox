@@ -21,55 +21,60 @@
 <script>
 import Jimp from 'jimp';
 /* eslint-disable */
-Number.prototype.map = function (in_min, in_max, out_min, out_max) {
-  return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+Number.prototype.map = function(in_min, in_max, out_min, out_max) {
+  return ((this - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
 };
 
 export default {
   computed: {
     brightness() {
       return this.$store.getters.brightness;
-    },
+    }
   },
   watch: {
     brightness(val) {
-      this.changeBrightness(val.map(0,100,-1,1));
-    },
+      this.changeBrightness(val.map(0, 100, -1, 1));
+    }
   },
   data() {
     return {
-      originalImage: require('@/assets/image/space.jpg'),
+      originalImage: require("@/assets/image/space.jpg"),
       image: null,
-      loading: false,
+      loading: false
     };
   },
   methods: {
     changeBrightness(val) {
       this.loading = true;
       Jimp.read(this.originalImage)
-        .then(async (image) => {
+        .then(async image => {
           image.brightness(val);
           const mime = image.getMIME();
           this.image = await image.getBase64Async(mime);
           this.loading = false;
         })
-        .catch((err) => {
-          this.$message.info(err);
+        .catch(err => {
+          this.$message.info("An error occured");
         });
     },
-    filter(){
+    filter() {
+      this.loading = true;
       Jimp.read(this.originalImage)
-        .then(async (image) => {
-          image.brightness(val);
+        .then(async image => {
+          image.color([
+            { apply: "hue", params: [-90] },
+            { apply: "lighten", params: [50] },
+            { apply: "xor", params: ["#06D"] }
+          ]);
           const mime = image.getMIME();
           this.image = await image.getBase64Async(mime);
           this.loading = false;
         })
-        .catch((err) => {
-          this.$message.info(err);
+        .catch(err => {
+          this.$message.info("An error occured");
         });
     }
-  },
+  }
 };
 </script>
 

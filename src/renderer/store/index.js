@@ -15,7 +15,6 @@ export default new Vuex.Store({
   },
   mutations: {
     CHANGE_BRIGHTNESS(state, brightness) {
-      console.log(brightness);
       state.brightness = brightness;
     },
   },
