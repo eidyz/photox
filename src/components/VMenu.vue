@@ -9,8 +9,6 @@
     <a-row>
       <a-col :span="24">
         Brightness
-        <!-- <a-slider :defaultValue="50"
-        :tooltipVisible="false" @afterChange="changeBrightness" v-model="brightness"/>-->
         <a-slider
           :defaultValue="50"
           :tooltipVisible="false"
