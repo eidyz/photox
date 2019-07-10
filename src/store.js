@@ -18,8 +18,14 @@ export default new Vuex.Store({
     image(state) {
       return state.image;
     },
-    filters(state) {
-      return state.filters;
+    brightness(state) {
+      return state.filters.brightness;
+    },
+    contrast(state) {
+      return state.filters.contrast;
+    },
+    saturation(state) {
+      return state.filters.saturation;
     },
     jimpInstance(state) {
       return state.jimpInstance;
@@ -44,7 +50,7 @@ export default new Vuex.Store({
   },
   actions: {
     async LOAD_IMAGE({ commit }, jimpInstance) {
-      commit('SET_JIMP', Jimp);
+      commit('SET_JIMP', jimpInstance);
       Jimp.read(jimpInstance).then(async (image) => {
         const mime = image.getMIME();
         const output = await image.getBase64Async(mime);

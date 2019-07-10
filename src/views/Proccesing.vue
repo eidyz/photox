@@ -25,20 +25,31 @@ export default {
     image() {
       return this.$store.getters.image;
     },
+    brightness() {
+      return this.$store.getters.brightness;
+    },
+    contrast() {
+      return this.$store.getters.contrast;
+    },
+    saturation() {
+      return this.$store.getters.saturation;
+    },
     filters() {
-      return this.$store.getters.filters;
+      const { brightness, contrast, saturation } = this;
+      return {
+        brightness,
+        contrast,
+        saturation,
+      };
     },
     jimpInstance() {
       return this.$store.getters.jimpInstance;
     },
   },
   watch: {
-    filters: {
-      deep: true,
-      handle: (val) => {
-        console.log(val);
-        this.filterImage();
-      },
+    filters(val) {
+      console.log(val);
+      this.filterImage();
     },
   },
   data() {
@@ -48,13 +59,19 @@ export default {
   },
   methods: {
     filterImage() {
+      this.loading = true;
       Jimp.read(this.jimpInstance).then(async (image) => {
         const mime = image.getMIME();
         image.brightness(mapNumber(this.filters.brightness));
         image.contrast(mapNumber(this.filters.contrast));
+        image.color([{ apply: 'saturate', params: [mapNumber(this.filters.saturation, { outMin: -100, outMax: 100 })] }]);
         const output = await image.getBase64Async(mime);
         this.$store.commit('SET_IMAGE', output);
-        // image.color([{ apply: 'saturate', params: [this.filters.saturation] }]);
+      }).catch((err) => {
+        console.log(err);
+        this.$message.error('An error occured');
+      }).finally(() => {
+        this.loading = false;
       });
     },
   },
