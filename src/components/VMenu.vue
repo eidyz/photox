@@ -3,7 +3,7 @@
   <div class="v-menu p-2 fill-space">
     <a-row class="pb-4">
       <a-col>
-        <a-icon type="left" />
+        <a-icon type="arrow-left" />
       </a-col>
     </a-row>
     <a-row>

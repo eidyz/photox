@@ -3,6 +3,11 @@
 @import "~bootstrap-scss/mixins";
 @import "~bootstrap-scss/utilities";
 
+*{
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 body{
   background-color: #44475a !important;
 }
