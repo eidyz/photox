@@ -1,6 +1,6 @@
-# evc
+# Photox
 
-> electron-vue photo camanjs photo editor
+> electron-vue jimp based photo editor
 
 #### Build Setup
 
