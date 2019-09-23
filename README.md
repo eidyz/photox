@@ -1,4 +1,4 @@
-# Photox
+# PhotoX
 
 > electron-vue jimp based photo editor
 
