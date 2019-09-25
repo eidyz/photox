@@ -1,29 +1,19 @@
-# photox
+# PhotoX
+
+## VUE.JS SIMPLE PHOTO EDITOR
+
+![](photox-preview-1.gif)
 
 ## Project setup
-```
+```bash
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
 
-### Compiles and minifies for production
+## Todo
 ```
-npm run build
+Filters preset previews
+More options to manipulate photos
+Look into performance
+Possibly switch from JIMP to PixiJS
 ```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
