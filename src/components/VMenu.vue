@@ -88,6 +88,7 @@ export default {
   color: #f8f8f2;
   background-color: #282a36;
   box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.25);
+  overflow: scroll;
 }
 
 .filter-preset-wrapper {

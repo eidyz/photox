@@ -1,6 +1,6 @@
 <template>
   <div class="page home d-flex flex-column fill-space">
-    <a-row class="d-flex flex-1">
+    <a-row class="d-flex flex-1 mh-100vh">
       <a-col :span="4">
         <v-menu></v-menu>
       </a-col>
@@ -47,8 +47,7 @@ export default {
     },
   },
   watch: {
-    filters(val) {
-      console.log(val);
+    filters() {
       this.filterImage();
     },
   },
